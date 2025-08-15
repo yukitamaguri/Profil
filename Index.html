@@ -1,0 +1,477 @@
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1" name="viewport"/>
+  <title>
+   Portofolio Mikennekogenchi
+  </title>
+  <script src="https://cdn.tailwindcss.com">
+  </script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&amp;display=swap" rel="stylesheet"/>
+  <style>
+   body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #2f2f2f;
+      color: #c0c0c0;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+    }
+    /* Purple glow border */
+    .glow-border {
+      box-shadow:
+        0 0 8px 2px #9b59b6,
+        inset 0 0 8px 1px #9b59b6;
+      border-radius: 1rem;
+      border: 1px solid #6e3fa0;
+      background-color: #3a3a3a;
+    }
+    /* Profile image purple glow */
+    .profile-glow {
+      box-shadow:
+        0 0 15px 4px #9b59b6;
+      border-radius: 9999px;
+      border: 3px solid #6e3fa0;
+      transition: transform 0.3s ease;
+    }
+    .profile-glow:hover {
+      transform: scale(1.05) rotate(3deg);
+      box-shadow:
+        0 0 25px 6px #c085f5,
+        0 0 40px 10px #a05eea;
+    }
+    a.glow-link {
+      color: #b491d3;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    a.glow-link:hover {
+      color: #d9b3ff;
+      text-shadow: 0 0 8px #d9b3ff;
+    }
+    /* Animated purple sparkles */
+    .sparkle {
+      position: absolute;
+      border-radius: 50%;
+      background: #9b59b6;
+      box-shadow: 0 0 8px 3px #b491d3;
+      animation: sparkleAnim 3s infinite ease-in-out alternate;
+      opacity: 0.8;
+      filter: drop-shadow(0 0 4px #b491d3);
+      pointer-events: none;
+      z-index: 0;
+    }
+    @keyframes sparkleAnim {
+      0% {
+        transform: translateY(0) scale(1);
+        opacity: 0.8;
+      }
+      50% {
+        transform: translateY(-10px) scale(1.3);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(0) scale(1);
+        opacity: 0.8;
+      }
+    }
+    /* Section heading underline glow */
+    .underline-glow {
+      position: relative;
+      display: inline-block;
+      color: #c0a3e8;
+    }
+    .underline-glow::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -6px;
+      width: 100%;
+      height: 3px;
+      background: #9b59b6;
+      box-shadow: 0 0 8px 3px #b491d3;
+      border-radius: 2px;
+      opacity: 0.8;
+      transition: opacity 0.3s ease;
+    }
+    .underline-glow:hover::after {
+      opacity: 1;
+    }
+    /* Button with purple glow */
+    .btn-purple {
+      background-color: #6e3fa0;
+      color: #e0d7f7;
+      padding: 0.5rem 1.5rem;
+      border-radius: 9999px;
+      font-weight: 600;
+      box-shadow: 0 0 10px 2px #9b59b6;
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    }
+    .btn-purple:hover {
+      background-color: #8e5ed1;
+      box-shadow: 0 0 20px 5px #c085f5;
+      color: #fff;
+    }
+    /* Navbar styles */
+    nav {
+      background-color: #3a3a3a;
+      box-shadow:
+        0 0 8px 2px #9b59b6;
+      border-radius: 0 0 1rem 1rem;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 50;
+    }
+    nav ul {
+      display: flex;
+      justify-content: center;
+      gap: 2.5rem;
+      padding: 1rem 0;
+      margin: 0;
+      list-style: none;
+    }
+    nav a {
+      color: #c0c0c0;
+      font-weight: 600;
+      font-size: 1.125rem;
+      text-decoration: none;
+      position: relative;
+      padding-bottom: 4px;
+      transition: color 0.3s ease;
+    }
+    nav a::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0%;
+      height: 2px;
+      background: #9b59b6;
+      box-shadow: 0 0 8px 3px #b491d3;
+      border-radius: 2px;
+      transition: width 0.3s ease;
+    }
+    nav a:hover,
+    nav a:focus {
+      color: #d9b3ff;
+    }
+    nav a:hover::after,
+    nav a:focus::after {
+      width: 100%;
+    }
+    /* Footer styles */
+    footer {
+      margin-top: 4rem;
+      padding: 2rem 1rem;
+      text-align: center;
+      color: #8a7cae;
+      font-size: 0.875rem;
+      border-top: 1px solid #6e3fa0;
+    }
+    footer a {
+      color: #b491d3;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.3s ease;
+    }
+    footer a:hover,
+    footer a:focus {
+      color: #d9b3ff;
+      text-shadow: 0 0 8px #d9b3ff;
+    }
+    /* Projects grid */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
+      gap: 1.5rem;
+      margin-top: 1rem;
+    }
+    .project-card {
+      background-color: #3a3a3a;
+      border-radius: 1rem;
+      box-shadow:
+        0 0 8px 2px #9b59b6;
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      display: flex;
+      flex-direction: column;
+    }
+    .project-card:hover {
+      transform: translateY(-6px);
+      box-shadow:
+        0 0 20px 5px #c085f5;
+    }
+    .project-image {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+      border-bottom: 2px solid #6e3fa0;
+    }
+    .project-content {
+      padding: 1rem;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .project-title {
+      font-weight: 700;
+      font-size: 1.25rem;
+      color: #d9b3ff;
+      margin-bottom: 0.5rem;
+    }
+    .project-desc {
+      flex-grow: 1;
+      color: #bfbfbf;
+      font-size: 0.95rem;
+      margin-bottom: 1rem;
+      line-height: 1.3;
+    }
+    .project-links a {
+      color: #b491d3;
+      font-weight: 600;
+      text-decoration: none;
+      margin-right: 1rem;
+      transition: color 0.3s ease;
+    }
+    .project-links a:hover,
+    .project-links a:focus {
+      color: #d9b3ff;
+      text-shadow: 0 0 8px #d9b3ff;
+    }
+    /* Responsive adjustments */
+    @media (max-width: 640px) {
+      nav ul {
+        gap: 1.25rem;
+      }
+      .project-image {
+        height: 140px;
+      }
+    }
+  </style>
+ </head>
+ <body class="min-h-screen relative bg-[#2f2f2f] text-[#c0c0c0]">
+  <!-- Navbar -->
+  <nav aria-label="Primary navigation" role="navigation">
+   <ul>
+    <li>
+     <a href="#about" tabindex="0">
+      About
+     </a>
+    </li>
+    <li>
+     <a href="#skills" tabindex="0">
+      Skills
+     </a>
+    </li>
+    <li>
+     <a href="#projects" tabindex="0">
+      Projects
+     </a>
+    </li>
+    <li>
+     <a href="#contact" tabindex="0">
+      Contact
+     </a>
+    </li>
+   </ul>
+  </nav>
+  <!-- Sparkles decoration -->
+  <div aria-hidden="true" class="sparkle" style="width:8px; height:8px; top:10%; left:15%; animation-delay: 0s;">
+  </div>
+  <div aria-hidden="true" class="sparkle" style="width:6px; height:6px; top:25%; left:80%; animation-delay: 1.2s;">
+  </div>
+  <div aria-hidden="true" class="sparkle" style="width:10px; height:10px; top:70%; left:20%; animation-delay: 0.7s;">
+  </div>
+  <div aria-hidden="true" class="sparkle" style="width:7px; height:7px; top:50%; left:90%; animation-delay: 1.5s;">
+  </div>
+  <div aria-hidden="true" class="sparkle" style="width:5px; height:5px; top:80%; left:75%; animation-delay: 2.3s;">
+  </div>
+  <main class="max-w-5xl w-full glow-border p-8 md:p-12 mt-20 mx-auto relative z-10">
+   <!-- About Section -->
+   <section class="flex flex-col items-center md:flex-row md:items-start md:space-x-10" id="about">
+    <div class="flex-shrink-0 mb-6 md:mb-0">
+     <img alt="Profile photo of a young Asian man with short black hair wearing
+     glasses and a dark purple shirt smiling in studio lighting"
+     class="profile-glow w-48 h-48 object-cover" height="200" loading="lazy"
+     src=""
+     width="200"/>
+    </div>
+    <div class="text-center md:text-left max-w-xl">
+     <h1 class="text-4xl font-bold text-slate-200 mb-3 underline-glow cursor-default select-none">
+      mikennekogenchi
+     </h1>
+     <p class="text-lg text-slate-300 mb-6 leading-relaxed">
+      Hobi saya adalah bersepeda, ngoding, dan membuat 3D model. Saya senang menggabungkan kreativitas dan teknologi untuk menghasilkan karya yang unik dan fungsional.
+     </p>
+     <div class="space-y-3 text-lg">
+      <a class="glow-link flex items-center justify-center md:justify-start space-x-3" href="https://WA.me/083832570926" rel="noopener noreferrer" target="_blank">
+       <i aria-hidden="true" class="fab fa-whatsapp fa-lg">
+       </i>
+       <span>
+        Whatsapp: 083832570926
+       </span>
+      </a>
+      <a class="glow-link flex items-center justify-center md:justify-start space-x-3" href="https://www.tiktok.com/@mikennekogenchi?_t=ZS-8w87u1oX6xu&amp;_r=1" rel="noopener noreferrer" target="_blank">
+       <i aria-hidden="true" class="fab fa-tiktok fa-lg">
+       </i>
+       <span>
+        TikTok: @mikennekogenchi
+       </span>
+      </a>
+     </div>
+    </div>
+   </section>
+   <!-- Skills Section -->
+   <section class="mt-16" id="skills">
+    <h2 class="text-2xl font-semibold text-slate-200 mb-6 underline-glow cursor-default select-none text-center">
+     Skill &amp; Tools
+    </h2>
+    <div class="grid grid-cols-2 sm:grid-cols-3 gap-6 max-w-xl mx-auto">
+     <div class="glow-border p-4 flex flex-col items-center rounded-lg">
+      <img alt="Icon representing coding with a laptop and code brackets in purple style" class="w-16 h-16 mb-3" height="64" loading="lazy" src="https://storage.googleapis.com/a1aa/image/e8039371-64b4-4189-8859-c3f7f1e73e7f.jpg" width="64"/>
+      <p class="text-purple-300 font-semibold">
+       Ngoding
+      </p>
+     </div>
+     <div class="glow-border p-4 flex flex-col items-center rounded-lg">
+      <img alt="Icon representing cycling with a stylized bicycle in purple tones" class="w-16 h-16 mb-3" height="64" loading="lazy" src="https://storage.googleapis.com/a1aa/image/c0c585d5-5d5d-46fc-d65e-dabe1c92f1e1.jpg" width="64"/>
+      <p class="text-purple-300 font-semibold">
+       Bersepeda
+      </p>
+     </div>
+     <div class="glow-border p-4 flex flex-col items-center rounded-lg">
+      <img alt="Icon representing 3D modeling with a purple wireframe cube" class="w-16 h-16 mb-3" height="64" loading="lazy" src="https://storage.googleapis.com/a1aa/image/756f9934-15eb-46f9-7a40-6d903b141e96.jpg" width="64"/>
+      <p class="text-purple-300 font-semibold">
+       3D Modeling
+      </p>
+     </div>
+     <div class="glow-border p-4 flex flex-col items-center rounded-lg">
+      <img alt="Icon representing Visual Studio Code editor with purple theme" class="w-16 h-16 mb-3" height="64" loading="lazy" src="https://storage.googleapis.com/a1aa/image/ecbdd74d-9a4b-4d38-6811-e879f4446f80.jpg" width="64"/>
+      <p class="text-purple-300 font-semibold">
+       VS Code
+      </p>
+     </div>
+     <div class="glow-border p-4 flex flex-col items-center rounded-lg">
+      <img alt="Icon representing Blender 3D software with purple style" class="w-16 h-16 mb-3" height="64" loading="lazy" src="https://storage.googleapis.com/a1aa/image/b7a6e7de-2d44-49ba-48f5-d867bfe4bdc9.jpg" width="64"/>
+      <p class="text-purple-300 font-semibold">
+       Prisma 3D
+      </p>
+     </div>
+     <div class="glow-border p-4 flex flex-col items-center rounded-lg">
+      <img alt="Icon representing Git version control with purple theme" class="w-16 h-16 mb-3" height="64" loading="lazy" src="https://storage.googleapis.com/a1aa/image/564cae46-c429-4e6f-014c-f868aa999dfb.jpg" width="64"/>
+      <p class="text-purple-300 font-semibold">
+       Git
+      </p>
+     </div>
+    </div>
+   </section>
+   <!-- Projects Section -->
+   <section class="mt-16" id="projects">
+    <h2 class="text-2xl font-semibold text-slate-200 mb-6 underline-glow cursor-default select-none text-center">
+     Projects
+    </h2>
+    <div class="projects-grid">
+     <article aria-label="Project: 3D Bicycle Model" class="project-card" tabindex="0">
+      <img alt="Screenshot of a detailed 3D bicycle model with purple lighting" class="project-image" height="400" loading="lazy" src="https://storage.googleapis.com/a1aa/image/0cef1182-2a84-4b98-d1a3-cf33c0790b55.jpg" width="600"/>
+      <div class="project-content">
+       <h3 class="project-title">
+        3D Bicycle Model
+       </h3>
+       <p class="project-desc">
+        Model sepeda 3D yang realistis dengan pencahayaan ungu, dibuat menggunakan Blender dan siap untuk animasi.
+       </p>
+       <div class="project-links">
+        <a aria-label="GitHub repository for 3D Bicycle Model" href="https://github.com/mikennekogenchi/3d-bicycle-model" rel="noopener noreferrer" target="_blank">
+         <i aria-hidden="true" class="fab fa-github">
+         </i>
+         GitHub
+        </a>
+        <a aria-label="Behance portfolio for 3D Bicycle Model" href="https://www.behance.net/gallery/3d-bicycle-model" rel="noopener noreferrer" target="_blank">
+         Behance
+        </a>
+       </div>
+      </div>
+     </article>
+     <article aria-label="Project: Personal Website" class="project-card" tabindex="0">
+      <img alt="Screenshot of a dark-themed personal portfolio website with purple highlights" class="project-image" height="400" loading="lazy" src="https://storage.googleapis.com/a1aa/image/26f941f7-2cc2-4bd3-0bf7-2ba62010c0a4.jpg" width="600"/>
+      <div class="project-content">
+       <h3 class="project-title">
+        Personal Website
+       </h3>
+       <p class="project-desc">
+        Website portofolio pribadi dengan tema gelap dan aksen ungu, dibuat menggunakan HTML, CSS, dan Tailwind.
+       </p>
+       <div class="project-links">
+        <a aria-label="GitHub repository for Personal Website" href="https://github.com/mikennekogenchi/personal-website" rel="noopener noreferrer" target="_blank">
+         <i aria-hidden="true" class="fab fa-github">
+         </i>
+         GitHub
+        </a>
+        <a aria-label="Live demo of Personal Website" href="https://mikennekogenchi.github.io/personal-website" rel="noopener noreferrer" target="_blank">
+         Live Demo
+        </a>
+       </div>
+      </div>
+     </article>
+     <article aria-label="Project: Cycling Tracker App" class="project-card" tabindex="0">
+      <img alt="Screenshot of a cycling tracker mobile app interface with purple theme" class="project-image" height="400" loading="lazy" src="https://storage.googleapis.com/a1aa/image/19cb076d-08dd-483b-e917-b4a3277cc98d.jpg" width="600"/>
+      <div class="project-content">
+       <h3 class="project-title">
+        Cycling Tracker App
+       </h3>
+       <p class="project-desc">
+        Aplikasi mobile untuk melacak rute dan statistik bersepeda dengan antarmuka berwarna ungu yang elegan.
+       </p>
+       <div class="project-links">
+        <a aria-label="GitHub repository for Cycling Tracker App" href="https://github.com/mikennekogenchi/cycling-tracker-app" rel="noopener noreferrer" target="_blank">
+         <i aria-hidden="true" class="fab fa-github">
+         </i>
+         
+        </a>
+        <a aria-label="Google Play Store link for Cycling Tracker App" href="https://play.google.com/store/apps/details?id=com.mikennekogenchi.cyclingtracker" rel="noopener noreferrer" target="_blank">
+         
+        </a>
+       </div>
+      </div>
+     </article>
+    </div>
+   </section>
+   <!-- Contact Section -->
+   <section class="mt-16 text-center" id="contact">
+    <h2 class="text-2xl font-semibold text-slate-200 mb-6 underline-glow cursor-default select-none">
+     Contact Me
+    </h2>
+    <p class="mb-6 max-w-xl mx-auto text-slate-300">
+     Jangan ragu untuk menghubungi saya melalui Whatsapp atau TikTok untuk kolaborasi, pertanyaan, atau sekadar menyapa!
+    </p>
+    <div class="flex flex-col sm:flex-row justify-center gap-6 max-w-md mx-auto">
+     <a aria-label="Contact Mikennekogenchi on Whatsapp" class="btn-purple inline-flex items-center justify-center space-x-3" href="https://WA.me/083832570926" rel="noopener noreferrer" target="_blank">
+      <i aria-hidden="true" class="fab fa-whatsapp fa-lg">
+      </i>
+      <span>
+       Whatsapp
+      </span>
+     </a>
+     <a aria-label="Visit Mikennekogenchi TikTok profile" class="btn-purple inline-flex items-center justify-center space-x-3" href="https://www.tiktok.com/@mikennekogenchi?_t=ZS-8w87u1oX6xu&amp;_r=1" rel="noopener noreferrer" target="_blank">
+      <i aria-hidden="true" class="fab fa-tiktok fa-lg">
+      </i>
+      <span>
+       TikTok
+      </span>
+     </a>
+    </div>
+   </section>
+  </main>
+  <!-- Footer -->
+  <footer>
+   <p>
+    © 2025 mikennekogenchi. All rights reserved. |
+    <a aria-label="GitHub profile of mikennekogenchi" href="https://github.com/mikennekogenchi" rel="noopener noreferrer" target="_blank">
+     GitHub
+    </a>
+   </p>
+  </footer>
+ </body>
+  </html>
